@@ -5,10 +5,10 @@ import '../providers/settings_provider.dart';
 class SoundManager {
   final AudioPlayer _player = AudioPlayer();
 
-  Future<void> playDeal() => _play('sounds/deal.mp3');
-  Future<void> playMove() => _play('sounds/move.mp3');
-  Future<void> playSequenceComplete() => _play('sounds/sequence_complete.mp3');
-  Future<void> playWin() => _play('sounds/win.mp3');
+  Future<void> playDeal() => _play('sounds/deal.wav');
+  Future<void> playMove() => _play('sounds/move.wav');
+  Future<void> playSequenceComplete() => _play('sounds/sequence_complete.wav');
+  Future<void> playWin() => _play('sounds/win.wav');
 
   Future<void> _play(String asset) async {
     try {
