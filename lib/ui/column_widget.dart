@@ -45,7 +45,7 @@ class ColumnWidget extends StatelessWidget {
               ? BoxDecoration(
                   borderRadius: BorderRadius.circular(6),
                   border: Border.all(
-                    color: Colors.yellow.withOpacity(0.6),
+                    color: Colors.yellow.withValues(alpha: 0.6),
                     width: 2,
                   ),
                 )

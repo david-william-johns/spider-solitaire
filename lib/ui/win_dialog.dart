@@ -164,7 +164,7 @@ class _ConfettiPainter extends CustomPainter {
       canvas.rotate(piece.rotation + progress * 5);
       canvas.drawRect(
         Rect.fromCenter(center: Offset.zero, width: piece.size, height: piece.size * 0.6),
-        Paint()..color = piece.color.withOpacity(0.8),
+        Paint()..color = piece.color.withValues(alpha: 0.8),
       );
       canvas.restore();
     }

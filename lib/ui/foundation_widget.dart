@@ -28,7 +28,7 @@ class FoundationWidget extends StatelessWidget {
                       child: Text(
                         '♠',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.3),
+                          color: Colors.white.withValues(alpha: 0.3),
                           fontSize: sizing.cardWidth * 0.5,
                         ),
                       ),

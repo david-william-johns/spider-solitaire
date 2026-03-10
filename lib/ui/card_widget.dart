@@ -140,17 +140,17 @@ class _CardBackPainter extends CustomPainter {
 
     // Crosshatch pattern
     final patternPaint = Paint()
-      ..color = Colors.white.withOpacity(0.25)
+      ..color = Colors.white.withValues(alpha: 0.25)
       ..strokeWidth = 1.0;
 
     const step = 6.0;
     // Diagonal lines top-left → bottom-right
     for (double d = -size.height; d < size.width + size.height; d += step) {
       canvas.drawLine(
-        Offset(d.clamp(0, size.width), (d < 0 ? -d : 0).clamp(0, size.height)),
+        Offset(d.clamp(0.0, size.width), (d < 0 ? -d : 0.0).clamp(0.0, size.height)),
         Offset(
-          (d + size.height).clamp(0, size.width),
-          (d < 0 ? size.height : size.height - d).clamp(0, size.height),
+          (d + size.height).clamp(0.0, size.width),
+          (d < 0 ? size.height : size.height - d).clamp(0.0, size.height),
         ),
         patternPaint,
       );
@@ -158,8 +158,8 @@ class _CardBackPainter extends CustomPainter {
     // Diagonal lines top-right → bottom-left
     for (double d = 0; d < size.width + size.height; d += step) {
       canvas.drawLine(
-        Offset((size.width - d).clamp(0, size.width), 0),
-        Offset(0, d.clamp(0, size.height)),
+        Offset((size.width - d).clamp(0.0, size.width), 0),
+        Offset(0, d.clamp(0.0, size.height)),
         patternPaint,
       );
     }
@@ -215,13 +215,13 @@ class _EmptySlotPainter extends CustomPainter {
     canvas.drawRRect(
       rrect,
       Paint()
-        ..color = Colors.black.withOpacity(0.2)
+        ..color = Colors.black.withValues(alpha: 0.2)
         ..style = PaintingStyle.fill,
     );
     canvas.drawRRect(
       rrect,
       Paint()
-        ..color = Colors.white.withOpacity(0.2)
+        ..color = Colors.white.withValues(alpha: 0.2)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1.0,
     );

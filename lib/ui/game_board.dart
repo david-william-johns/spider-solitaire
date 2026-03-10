@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/game_state.dart';
-import '../logic/game_logic.dart';
 import '../providers/game_provider.dart';
 import '../providers/settings_provider.dart';
 import '../utils/responsive.dart';
@@ -60,7 +59,7 @@ class _GameBoardState extends ConsumerState<GameBoard> {
                 builder: (context, constraints) {
                   final sizing = computeCardSizing(
                     BoxConstraints(
-                      maxWidth: constraints.maxWidth - sizing_stockWidth(constraints),
+                      maxWidth: constraints.maxWidth - _stockWidth(constraints),
                     ),
                   );
 
@@ -86,7 +85,7 @@ class _GameBoardState extends ConsumerState<GameBoard> {
     );
   }
 
-  double sizing_stockWidth(BoxConstraints constraints) {
+  double _stockWidth(BoxConstraints constraints) {
     return constraints.maxWidth * 0.1 + 16;
   }
 
