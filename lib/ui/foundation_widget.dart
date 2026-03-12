@@ -68,6 +68,58 @@ class _CompletedPileWidget extends StatelessWidget {
   }
 }
 
+// ── Vertical stacked foundation panel (right-side column) ────────────────────
+
+class VerticalFoundationPanel extends StatelessWidget {
+  final List<int> foundationCount;
+  final CardSizing sizing;
+
+  const VerticalFoundationPanel({
+    super.key,
+    required this.foundationCount,
+    required this.sizing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const overlapFraction = 0.10; // only 10% of each card visible (90% overlap)
+    final step = sizing.cardHeight * overlapFraction;
+    final totalH = sizing.cardHeight + 7 * step;
+
+    return SizedBox(
+      width: sizing.cardWidth,
+      height: totalH,
+      child: Stack(
+        children: [
+          for (int i = 0; i < 8; i++)
+            Positioned(
+              top: i * step,
+              child: foundationCount[i] == 0
+                  ? EmptySlotWidget(
+                      width: sizing.cardWidth,
+                      height: sizing.cardHeight,
+                      child: Center(
+                        child: Text(
+                          '♠',
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.3),
+                            fontSize: sizing.cardWidth * 0.5,
+                          ),
+                        ),
+                      ),
+                    )
+                  : _CompletedPileWidget(
+                      count: foundationCount[i],
+                      sizing: sizing,
+                      pileIndex: i,
+                    ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
 class _CompletedPilePainter extends CustomPainter {
   final int count;
   final int pileIndex;
